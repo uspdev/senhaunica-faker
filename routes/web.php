@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthorizationController;
-use App\Http\Controllers\RequestTokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +16,3 @@ use App\Http\Controllers\RequestTokenController;
 Route::get('/', function () {
     return view('index');
 });
-
-Route::post('/wsusuario/oauth/request_token', [RequestTokenController::class, 'createToken']);
-Route::post('/wsusuario/oauth/authorize', [AuthorizationController::class, 'authorise']);
