@@ -22,19 +22,20 @@
     </ul>
     </div>
     <div class="column jumbotron">
-        <form class="login-form" action="">
+        <form class="login-form" method="POST" action="/wsusuario/oauth/authorize">
             <div class="form-group">
                 <label class="control-label" for="callback">Callback</label>
-                <input class="form-control" type="text" id="callback" name="callback" disabled />
-            <input type="hidden" id="oauth_token" name="oauth_token" value="" />
+                <input class="form-control" type="text" id="callback" name="callback" value="{{ $referer }}callback" {{ $disabled }} />
             </div>
             <div class="form-group">
                 <label class="control-label" for="loginUsuario">Usuário</label>
-                <input class="form-control" type="text" id="loginUsuario" name="loginUsuario" disabled />
+                <input class="form-control" type="text" id="loginUsuario" name="loginUsuario" {{ $disabled }} />
             </div>
+            <input type="hidden" id="oauth_token" name="oauth_token" value="{{ $oauth_token }}" />
+            <input type="hidden" id="callback_id" name="callback_id" value="{{ $callback_id }}" />
             <div class="form-group">
-                <button class="btn btn-block btn-primary" type="submit" disabled>Login</button>
-            </div>
+                <button class="btn btn-block btn-primary" type="submit" {{ $disabled }}>Login</button>
+            </div> 
         </form>
     </div>
 </div>

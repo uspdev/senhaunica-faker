@@ -23,6 +23,7 @@ class AuthorizationController extends Controller
         $oauth_token = $request->oauth_token;
         $callback_id = $request->callback_id;
         $referer = $request->headers->get('referer');
-        return view('authorize.index', compact('oauth_token','callback_id', 'referer'));
+        $disabled = '';
+        return view('index', compact('oauth_token','callback_id', 'referer', 'disabled'));
     }
 }
