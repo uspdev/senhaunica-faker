@@ -12,11 +12,19 @@ class AccessTokenController extends Controller
     public function createToken(Request $request)
     {
         $oauth_string = $request->header('Authorization');
-        $oauth = OAuthUtils::parseAuthorization($oauth_string);
+
+        # o verifier vem via URL ou via HTTP body
+        if (isset($request->oauth_verifier)) {
+            $verifier = $request->oauth_verifier;
+        }
+        else {
+            $oauth = OAuthUtils::parseAuthorization($oauth_string);
+            $verifier = $oauth['oauth_verifier'];
+        }
         $token = [
-            'oauth_token' => $oauth['oauth_verifier'],
+            'oauth_token' => $verifier,
             'oauth_token_secret' => Str::random()
         ];
-        return response()->json($token);
+        return OAuthUtils::format($token);
     }   
 }

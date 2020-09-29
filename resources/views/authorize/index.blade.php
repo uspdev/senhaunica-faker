@@ -25,7 +25,7 @@
         <form class="login-form" method="POST" action="/wsusuario/oauth/authorize">
             <div class="form-group">
                 <label class="control-label" for="callback">Callback</label>
-                <input class="form-control" type="text" id="callback" name="callback" placeholder="http://localhost:80/callback" />
+                <input class="form-control" type="text" id="callback" name="callback" value="{{ $referer }}callback" />
             </div>
             <div class="form-group">
                 <label class="control-label" for="loginUsuario">Usuário</label>

@@ -4,7 +4,8 @@ namespace App\Utils;
 
 class OAuthUtils
 {
-    public static function parseAuthorization($oauth_string) {
+    public static function parseAuthorization($oauth_string)
+    {
         $tmp = substr($oauth_string, 6);
         $tmp = str_replace("\"", "", $tmp);
         $tmp = explode(", ", $tmp);
@@ -14,5 +15,14 @@ class OAuthUtils
             $oauth[$key] = $value;
         }
         return $oauth;
+    }
+
+    public static function format($token)
+    {
+        $response = "";
+        foreach ($token as $key => $value) {
+            $response .= "&".$key."=".$value;
+        }
+        return ltrim($response, '&');
     }
 }
