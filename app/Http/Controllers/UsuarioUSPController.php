@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Utils\OAuthUtils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Faker\Factory;
 
 class UsuarioUSPController extends Controller
 {
@@ -52,15 +53,18 @@ class UsuarioUSPController extends Controller
 
     private function generateUser($nusp)
     {
-        $email = "u".$nusp."@usp.br";
+        $faker = Factory::create();
+        $email = explode('@',$faker->email)[0].$nusp."@usp.br";
+        $telefone = '(3xx14)'.$faker->numberBetween($min = 1000, $max = 9999).'-'.$faker->numberBetween($min = 1000, $max = 9999);
+
         $user = [
             "loginUsuario" => $nusp,
-            "nomeUsuario" => "User ".$nusp%10000,
+            "nomeUsuario" => $faker->firstName . ' '. $faker->lastName,
             "tipoUsuario" => "I",
             "emailPrincipalUsuario" => $email,
             "emailAlternativoUsuario" => "u".$nusp."@computacao.br",
             "emailUspUsuario" => $email,
-            "numeroTelefoneFormatado" => "(3xx14)1592-6535",
+            "numeroTelefoneFormatado" => $telefone,
             "wsuserid" => Str::random(),
             "vinculo" => $this->vinculos($nusp)
         ];
