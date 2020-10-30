@@ -10,7 +10,7 @@ use Faker\Factory;
 
 class UsuarioUSPController extends Controller
 {
-    private function vinculos($nusp)
+    private function vinculos(string $nusp): array
     {
         $nomes = [
             ["tipo" => "SERVIDOR", "nome" => "Servidor"],
@@ -51,7 +51,7 @@ class UsuarioUSPController extends Controller
         return $vinculos;
     }
 
-    private function generateUser($nusp)
+    private function generateUser(string $nusp): array
     {
         $faker = Factory::create();
         $email = explode('@',$faker->email)[0].$nusp."@usp.br";
