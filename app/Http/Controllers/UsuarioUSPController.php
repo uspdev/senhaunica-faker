@@ -29,7 +29,8 @@ class UsuarioUSPController extends Controller
             "siglaUnidade" => "USP",
             "nomeUnidade" => "USP",
             "nomeVinculo" => "Outro",
-            "nomeAbreviadoFuncao" => null
+            "nomeAbreviadoFuncao" => null, 
+            "tipoFuncao" => null
         ];
 
         $vinculos = [];
@@ -37,7 +38,12 @@ class UsuarioUSPController extends Controller
         for ($i = 0; $i < count($nomes); $i++) {
             if ($cod%2 == 0) {
                 $vinculo["tipoVinculo"] = $nomes[$i]["tipo"];
-                $vinculo["nomeVinculo"] = $nomes[$i]["nome"];
+                $vinculo["nomeVinculo"] = $nomes[$i]["nome"]; 
+                if ($i == 0 and $cod == 2) { 
+                    $vinculo["tipoFuncao"] = "Docente"; 
+                } else {
+                    $vinculo["tipoFuncao"] = null;
+                }
                 $vinculos[] = $vinculo;
             }
             $cod = $cod >> 1;
