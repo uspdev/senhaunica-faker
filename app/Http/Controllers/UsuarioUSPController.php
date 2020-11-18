@@ -16,8 +16,8 @@ class UsuarioUSPController extends Controller
             ["tipo" => "SERVIDOR", "nome" => "Servidor"],
             ["tipo" => "SERVIDOR", "nome" => "Servidor"],
             ["tipo" => "ESTAGIARIORH", "nome" => "Estagiário"],
-            ["tipo" => "ALUNOGR", "nome" => "Aluno de Graduação"],
-            ["tipo" => "ALUNOPOS", "nome" => "Aluno de Pós-graduação"]
+            ["tipo" => "ALUNOPOS", "nome" => "Aluno de Pós-graduação"],
+            ["tipo" => "ALUNOGR", "nome" => "Aluno de Graduação"]
         ];
 
         $vinculo = [
@@ -36,13 +36,11 @@ class UsuarioUSPController extends Controller
         $vinculos = [];
         $cod = intval($nusp/10000);
         for ($i = 0; $i < count($nomes); $i++) {
-            if ($cod%2 == 0) {
+            if ($cod%2 != 0) {
                 $vinculo["tipoVinculo"] = $nomes[$i]["tipo"];
                 $vinculo["nomeVinculo"] = $nomes[$i]["nome"]; 
-                if ($i == 0 and $cod == 2) { 
+                if ($i == 1) {
                     $vinculo["tipoFuncao"] = "Docente"; 
-                } else {
-                    $vinculo["tipoFuncao"] = null;
                 }
                 $vinculos[] = $vinculo;
             }
