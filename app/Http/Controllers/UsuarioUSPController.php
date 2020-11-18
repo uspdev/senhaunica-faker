@@ -40,9 +40,9 @@ class UsuarioUSPController extends Controller
                 $vinculo["tipoVinculo"] = $nomes[$i]["tipo"];
                 $vinculo["nomeVinculo"] = $nomes[$i]["nome"]; 
                 if ($i == 0 and $cod == 2) { 
-                	$vinculo["tipoFuncao"] = "Docente"; 
+                        $vinculo["tipoFuncao"] = "Docente"; 
                 } else {
-                	$vinculo["tipoFuncao"] = null; 
+                        $vinculo["tipoFuncao"] = null;
                 }
                 $vinculos[] = $vinculo;
             }
