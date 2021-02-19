@@ -9,4 +9,8 @@ Basta seguir os procedimentos padrão:
   * Clonar;
   * Rodar o `composer install`;
   * Copiar o `.env.example` para `.env`;
-  * Seguir os procedimentos das dependências.
+  * alterar o `APP_URL` para a URL correta. Ex: `http://127.0.0.1:3141`.
+
+Do lado do sistema que consumirá a autenticação falsa é necessário:
+  * Usar o [uspdev/senhaunica-socialite](https://github.com/uspdev/senhaunica-socialite);
+  * No `.env`, configurar a variável `SENHAUNICA_DEV` com a URL do `APP_URL`, mas acrescentando `/wsusuario/oauth`. Ex: `http://127.0.0.1:3141/wsusuario/oauth`.
