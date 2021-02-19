@@ -9,7 +9,8 @@ Basta seguir os procedimentos padrão:
   * Clonar;
   * Rodar o `composer install`;
   * Copiar o `.env.example` para `.env`;
-  * alterar o `APP_URL` para a URL correta. Ex: `http://127.0.0.1:3141`.
+  * Alterar o `APP_URL` para a URL correta. Ex: `http://127.0.0.1:3141`;
+  * Daí basta configurar o servidor web ou rodar direto o `php artisan serve`.
 
 Do lado do sistema que consumirá a autenticação falsa é necessário:
   * Usar o [uspdev/senhaunica-socialite](https://github.com/uspdev/senhaunica-socialite);
