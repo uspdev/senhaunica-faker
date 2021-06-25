@@ -2,10 +2,15 @@
 
 @section ('title') Senhaunica Faker @endsection
 
+@section('skin_login_bar')
+  {{-- removendo o conteúdo do login_bar --}}
+  &nbsp;
+@endsection
+
 @section ('content')
 
 <div class="row">
-    <div class="column ml-5 mr-5">
+    <div class="col-md-7">
     Utilize os códigos abaixo para simular login de diversos tipos de usuários.
     <ul>
         <li>100XX: Servidor não-docente;</li>
@@ -21,22 +26,36 @@
         <li>2000XX: Estagiário e aluno de Graduação.</li>
     </ul>
     </div>
-    <div class="column jumbotron">
-        <form class="login-form" method="POST" action="/wsusuario/oauth/authorize">
-            <div class="form-group">
-                <label class="control-label" for="callback">Callback</label>
-                <input class="form-control" type="text" id="callback" name="callback" value="{{ $referer }}callback" {{ $disabled }} />
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="loginUsuario">Usuário</label>
-                <input class="form-control" type="text" id="loginUsuario" name="loginUsuario" {{ $disabled }} />
-            </div>
-            <input type="hidden" id="oauth_token" name="oauth_token" value="{{ $oauth_token }}" />
-            <input type="hidden" id="callback_id" name="callback_id" value="{{ $callback_id }}" />
-            <div class="form-group">
-                <button class="btn btn-block btn-primary" type="submit" {{ $disabled }}>Login</button>
-            </div> 
-        </form>
+    <div class="col-md-5">
+        <div class="jumbotron py-4" style="width:350px;">
+            <form class="login-form" method="POST" action="wsusuario/oauth/authorize">
+                @csrf
+                <div class="form-group">
+                    <label class="control-label" for="callback">Callback</label>
+                    <input class="form-control" type="text" id="callback" name="callback" value="{{ old('callback') ?? $referer.'callback' }}" {{ $disabled }} required />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="loginUsuario">Usuário</label>
+                    <input class="form-control" type="text" id="loginUsuario" name="loginUsuario" value="{{ old('loginUsuario') ?? '' }}" {{ $disabled }} required autofocus />
+                </div>
+                <input type="hidden" id="oauth_token" name="oauth_token" value="{{ $oauth_token }}" />
+                <input type="hidden" id="callback_id" name="callback_id" value="{{ $callback_id }}" />
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" {{ $disabled }}>Login</button>
+                </div> 
+
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            </form>
+
+        </div>
     </div>
 </div>
 @endsection

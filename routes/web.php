@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/wsusuario/oauth/authorize', [AuthorizationController::class, 'index']);
+Route::post('/wsusuario/oauth/authorize', [AuthorizationController::class, 'authorise']);

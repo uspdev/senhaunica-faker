@@ -18,11 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('/wsusuario/oauth/access_token', [AccessTokenController::class, 'createToken']);
-Route::post('/wsusuario/oauth/authorize', [AuthorizationController::class, 'authorise']);
 Route::post('/wsusuario/oauth/request_token', [RequestTokenController::class, 'createToken']);
 Route::post('/wsusuario/oauth/usuariousp', [UsuarioUSPController::class, 'createUser']);
