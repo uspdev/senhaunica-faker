@@ -1,6 +1,21 @@
 # senhaunica-faker-laravel
 Implementação mínima das respostas de OAuth1 usadas pelo [uspdev/senhaunica-socialite](https://github.com/uspdev/senhaunica-socialite).
 
+## Configuração
+  * Especificar os logins (separados por vírgula) no `.env`, conforme exemplo:
+  
+```
+  FAKER_SERVIDOR=111111,222222
+  FAKER_DOCENTE=333333
+  FAKER_ESTAGIARIORH=444444
+  FAKER_ALUNOGR=555555
+  FAKER_ALUNOPOS=666666
+  FAKER_COD_UNIDADE=17
+  FAKER_SIGLA_UNIDADE=FMRP
+  FAKER_NOME_UNIDADE="Faculdade de Medicina de Ribeirao Preto" 
+  
+```
+
 ## Dependências
   * [uspdev/laravel-usp-theme](https://github.com/uspdev/laravel-usp-theme)
 

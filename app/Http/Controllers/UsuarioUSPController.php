@@ -14,7 +14,6 @@ class UsuarioUSPController extends Controller
     {
         $nomes = [
             ["tipo" => "SERVIDOR", "nome" => "Servidor"],
-            ["tipo" => "SERVIDOR", "nome" => "Servidor"],
             ["tipo" => "ESTAGIARIORH", "nome" => "Estagiário"],
             ["tipo" => "ALUNOPOS", "nome" => "Aluno de Pós-graduação"],
             ["tipo" => "ALUNOGR", "nome" => "Aluno de Graduação"]
@@ -25,33 +24,49 @@ class UsuarioUSPController extends Controller
             "codigoSetor" => 0,
             "nomeAbreviadoSetor" => null,
             "nomeSetor" => null,
-            "codigoUnidade" => $nusp%1000,
-            "siglaUnidade" => "USP",
-            "nomeUnidade" => "USP",
+            "codigoUnidade" => config("faker.codigoUnidade"),
+            "siglaUnidade" => config("faker.siglaUnidade"),
+            "nomeUnidade" => config("faker.nomeUnidade"),
             "nomeVinculo" => "Outro",
             "nomeAbreviadoFuncao" => null, 
             "tipoFuncao" => null
         ];
 
         $vinculos = [];
-        $cod = intval($nusp/10000);
-        for ($i = 0; $i < count($nomes); $i++) {
-            if ($cod%2 != 0) {
-                $vinculo = $skel;
-                $vinculo["tipoVinculo"] = $nomes[$i]["tipo"];
-                $vinculo["nomeVinculo"] = $nomes[$i]["nome"]; 
-                if ($i == 1) {
-                    $vinculo["tipoFuncao"] = "Docente"; 
+
+        foreach (config("faker.vinculos") as $vinc => $valor) {
+            foreach ($valor as $chave => $nrousp) {
+                if ($nrousp == $nusp) {
+                    $vinculo = $skel;
+                    $vinculo["tipoVinculo"] = strtoupper($vinc);
+                    //$vinculo["nomeVinculo"] = $nomes[$i]["nome"];  
+                    $vinculos[] = $vinculo;                       
                 }
-                $vinculos[] = $vinculo;
             }
-            $cod = $cod >> 1;
         }
 
-        # default
-        if ($vinculos == []) {
-            $vinculos[] = $skel;
+        if (empty($vinculos)) {                 
+
+            $cod = intval($nusp/10000);
+            for ($i = 0; $i < count($nomes); $i++) {
+                if ($cod%2 != 0) {
+                    $vinculo = $skel;
+                    $vinculo["tipoVinculo"] = $nomes[$i]["tipo"];
+                    $vinculo["nomeVinculo"] = $nomes[$i]["nome"]; 
+                    if ($i == 1) {
+                        $vinculo["tipoFuncao"] = "Docente"; 
+                    }
+                    $vinculos[] = $vinculo;
+                }
+                $cod = $cod >> 1;
+            }
+
+            # default
+            if ($vinculos == []) {
+                $vinculos[] = $skel;
+            }
         }
+        
 
         return $vinculos;
     }
