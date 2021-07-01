@@ -1,21 +1,6 @@
 # senhaunica-faker-laravel
 Implementação mínima das respostas de OAuth1 usadas pelo [uspdev/senhaunica-socialite](https://github.com/uspdev/senhaunica-socialite).
 
-## Configuração
-  * Especificar os logins (separados por vírgula) no `.env`, conforme exemplo:
-  
-```
-  FAKER_SERVIDOR=111111,222222
-  FAKER_DOCENTE=333333
-  FAKER_ESTAGIARIORH=444444
-  FAKER_ALUNOGR=555555
-  FAKER_ALUNOPOS=666666
-  FAKER_COD_UNIDADE=17
-  FAKER_SIGLA_UNIDADE=FMRP
-  FAKER_NOME_UNIDADE="Faculdade de Medicina de Ribeirao Preto" 
-  
-```
-
 ## Dependências
   * [uspdev/laravel-usp-theme](https://github.com/uspdev/laravel-usp-theme)
 
@@ -34,8 +19,17 @@ Do lado do sistema que consumirá a autenticação falsa é necessário:
 ```
     SENHAUNICA_DEV=http://127.0.0.1:3141/wsusuario/oauth
 ```
+## Configuração
+  * (opcional) Caso você necessite especificar uma lista de logins (números USP) associando-os a um (ou mais) respectivo vínculo, utilizar as variáveis abaixo no arquivo `.env`, conforme exemplo:
+  
+```
+  FAKER_SERVIDOR=111111,222222
+  FAKER_DOCENTE=333333
+  FAKER_ESTAGIARIORH=444444
+  FAKER_ALUNOGR=555555
+  FAKER_ALUNOPOS=666666  
 
-
+```
 ## Atualização
 
 Com a utilização do pacote `lucascudo/laravel-pt-br-localization` em dev, caso ele seja atualizado pelo composer, deve-se publicar novamente os seus arquivos com:

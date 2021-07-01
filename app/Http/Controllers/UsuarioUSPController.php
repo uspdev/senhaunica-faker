@@ -14,6 +14,7 @@ class UsuarioUSPController extends Controller
     {
         $nomes = [
             ["tipo" => "SERVIDOR", "nome" => "Servidor"],
+            ["tipo" => "SERVIDOR", "nome" => "Servidor", 'tipoFuncao' => 'Docente'],
             ["tipo" => "ESTAGIARIORH", "nome" => "Estagiário"],
             ["tipo" => "ALUNOPOS", "nome" => "Aluno de Pós-graduação"],
             ["tipo" => "ALUNOGR", "nome" => "Aluno de Graduação"]
@@ -34,12 +35,13 @@ class UsuarioUSPController extends Controller
 
         $vinculos = [];
 
-        foreach (config("faker.vinculos") as $vinc => $valor) {
-            foreach ($valor as $chave => $nrousp) {
+        foreach (config("faker.vinculos") as $vinc) {
+            foreach ($vinc['logins'] as $chave => $nrousp) {
                 if ($nrousp == $nusp) {
                     $vinculo = $skel;
-                    $vinculo["tipoVinculo"] = strtoupper($vinc);
-                    //$vinculo["nomeVinculo"] = $nomes[$i]["nome"];  
+                    $vinculo["tipoVinculo"] = $vinc['tipo'];
+                    $vinculo["nomeVinculo"] = $vinc["nome"];
+                    $vinculo["tipoFuncao"]  = $vinc["tipoFuncao"] ?? null;
                     $vinculos[] = $vinculo;                       
                 }
             }
@@ -53,9 +55,7 @@ class UsuarioUSPController extends Controller
                     $vinculo = $skel;
                     $vinculo["tipoVinculo"] = $nomes[$i]["tipo"];
                     $vinculo["nomeVinculo"] = $nomes[$i]["nome"]; 
-                    if ($i == 1) {
-                        $vinculo["tipoFuncao"] = "Docente"; 
-                    }
+                    $vinculo["tipoFuncao"] = $nomes[$i]["tipoFuncao"] ?? null; 
                     $vinculos[] = $vinculo;
                 }
                 $cod = $cod >> 1;
@@ -93,6 +93,9 @@ class UsuarioUSPController extends Controller
 
     public function createUser(Request $request)
     {
+
+        //return response()->json($this->generateUser($request->codpes));
+        
         $oauth_string = $request->header('Authorization');
         $oauth = OAuthUtils::parseAuthorization($oauth_string);
         $user = $this->generateUser($oauth['oauth_token']);
