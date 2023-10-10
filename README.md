@@ -1,6 +1,9 @@
 # senhaunica-faker-laravel
 Implementação mínima das respostas de OAuth1 usadas pelo [uspdev/senhaunica-socialite](https://github.com/uspdev/senhaunica-socialite).
 
+## Observações
+O sistema roda em PHP 8.2, mas deve rodar sem problemas no PHP 7.4. Basta apagar o composer.lock.
+
 ## Dependências
   * [uspdev/laravel-usp-theme](https://github.com/uspdev/laravel-usp-theme)
 
