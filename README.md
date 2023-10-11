@@ -13,6 +13,7 @@ Build:
   * `docker build -t faker .` (o ponto indica que o Dockerfile se encontra no diretório corrente)
 
 Rodar: `docker run --rm --name faker faker`
+
 Parar: `docker container rm -f faker`
 
 ## Como rodar?
