@@ -7,6 +7,14 @@ O sistema roda em PHP 8.2, mas deve rodar sem problemas no PHP 7.4. Basta apagar
 ## Dependências
   * [uspdev/laravel-usp-theme](https://github.com/uspdev/laravel-usp-theme)
 
+## Como rodar com docker?
+Build:
+  * Clonar;
+  * `docker build -t faker .` (o ponto indica que o Dockerfile se encontra no diretório corrente)
+
+Rodar: `docker run --rm --name faker faker`
+Parar: `docker container rm -f faker`
+
 ## Como rodar?
 Basta seguir os procedimentos padrão:
   * Clonar;
