@@ -10,6 +10,7 @@ O sistema roda em PHP 8.2, mas deve rodar sem problemas no PHP 7.4. Basta apagar
 ## Como rodar com docker?
 Build:
   * Clonar;
+  * cp .env.example .env;
   * `docker build -t faker .` (o ponto indica que o Dockerfile se encontra no diretório corrente)
 
 Rodar: `docker run --rm --name faker faker`
