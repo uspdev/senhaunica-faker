@@ -20,9 +20,6 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|' /etc/apache2/sites-available/
 USER www-data
 RUN composer install --no-interaction --no-dev
 
-# não recomendado para produção
-RUN php artisan key:generate
-
 # fonte:
 # [1] https://www.digitalocean.com/community/tutorials/how-to-install-and-set-up-laravel-with-docker-compose-on-ubuntu-22-04
 # [2] https://github.com/docker-library
