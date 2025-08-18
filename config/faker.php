@@ -6,34 +6,56 @@ return [
 
     'vinculos' => [
         [
-            'tipo' => 'SERVIDOR',
-            'nome' => 'Servidor',
+            'tipoVinculo' => 'SERVIDOR',
+            'nomeVinculo' => 'Servidor',
             'logins' => explode(',', env('FAKER_SERVIDOR', '')),
         ],
         [
-            'tipo' => 'SERVIDOR',
-            'nome' => 'Servidor',
-            'logins' => explode(',', env('FAKER_DOCENTE', '')),
+            'tipoVinculo' => 'SERVIDOR',
+            'nomeVinculo' => 'Servidor',
             'tipoFuncao' => 'Docente',
+            'logins' => explode(',', env('FAKER_DOCENTE', '')),
         ],
         [
-            'tipo' => 'ESTAGIARIORH',
-            'nome' => 'Estagiário',
+            'tipoVinculo' => 'ESTAGIARIORH',
+            'codigoSetor' => 0,
+            'nomeAbreviadoSetor' => null,
+            'nomeSetor' => null,
+            'tipoFuncao' => 'Não Informada',
+            'nomeVinculo' => 'Estagiário',
             'logins' => explode(',', env('FAKER_ESTAGIARIORH', '')),
         ],
         [
-            'tipo' => 'ALUNOGR',
-            'nome' => 'Aluno de Graduação',
+            'tipoVinculo' => 'ALUNOGR',
+            'codigoSetor' => 0,
+            'nomeAbreviadoSetor' => null,
+            'nomeSetor' => null,
+            'tipoFuncao' => null,
+            'nomeVinculo' => 'Aluno de Graduação',
             'logins' => explode(',', env('FAKER_ALUNOGR', '')),
         ],
         [
-            'tipo' => 'ALUNOPOS',
-            'nome' => 'Aluno de Pós-graduação',
+            'tipoVinculo' => 'ALUNOPOS',
+            'codigoSetor' => 0,
+            'nomeAbreviadoSetor' => null,
+            'nomeSetor' => null,
+            'tipoFuncao' => null,
+            'nomeVinculo' => 'Aluno de Pós-graduação',
             'logins' => explode(',', env('FAKER_ALUNOPOS', '')),
         ],
     ],
 
-    'codigoUnidade' => env('FAKER_CODIGO_UNIDADE', null),
+    // alguns tipos de função para servidor
+    'tipoFuncaoServidor' => [
+        'Adacêmica',
+        'Administrativa',
+        'Biblioteca',
+        'Informática',
+        'Manutenção',
+    ],
+
+    'codigoUnidade' => env('FAKER_CODIGO_UNIDADE', 1),
     'siglaUnidade' => env('FAKER_SIGLA_UNIDADE', 'USP'),
     'nomeUnidade' => env('FAKER_NOME_UNIDADE', 'Universidade de São Paulo'),
+    'codigosSetor' => explode(',', env('FAKER_CODIGOS_SETOR', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15')),
 ];
