@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccessTokenController;
-use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\RequestTokenController;
 use App\Http\Controllers\UsuarioUSPController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
