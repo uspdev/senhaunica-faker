@@ -1,10 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "uspdev/senhaunica-faker",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Implementação mínima de respostas oauth1 usadas no uspdev/senhaunica-socialite",
     "keywords": [
-        "framework",
-        "laravel"
+        "oauth1",
+        "uspdev",
+        "senhaunica-faker"
     ],
     "license": "MIT",
     "require": {
@@ -19,7 +20,7 @@
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
-        "lucascudo/laravel-pt-br-localization": "^1.1",
+        "lucascudo/laravel-pt-br-localization": "^2 || ^3",
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3"
@@ -53,6 +54,10 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
             "@php artisan vendor:publish --provider='Uspdev\\UspTheme\\ServiceProvider' --tag=assets --force"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || php artisan vendor:publish --tag=laravel-pt-br-localization --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
