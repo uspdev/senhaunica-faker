@@ -48,6 +48,9 @@
             <div class="ml-2">
               tipo: <b>{{ $vinculo['tipoVinculo'] }}</b>,
               nome: <b>{{ $vinculo['nomeVinculo'] }}</b>,
+              @if (isset($vinculo['tipoFuncao']))
+                função: <b>{{ $vinculo['tipoFuncao'] }}</b>,
+              @endif
               logins: <b>{{ implode(', ', $vinculo['logins']) }}</b>
             </div>
           @endforeach
