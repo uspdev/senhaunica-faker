@@ -1,16 +1,26 @@
 # senhaunica-faker-laravel
+
 Implementação mínima das respostas de OAuth1 usadas pelo [uspdev/senhaunica-socialite](https://github.com/uspdev/senhaunica-socialite).
 
-## Dependências
-  * [uspdev/laravel-usp-theme](https://github.com/uspdev/laravel-usp-theme)
+# Usando em outro sistema
 
-## Como rodar com docker?
+Basta subir na sua máquina um container apontando para a imagem do senhaunica-faker:
+
+    docker run --rm \
+      -p 3141:80 \
+      --env "APP_URL=http://127.0.0.1:3141" \
+      --env "APP_KEY=base64:hFCIxDuhMowTmnPENgqjXXOPcoJnC777ZBkEIy25t6o=" \
+      uspdev/senhaunica-faker
+
+
+## Como desenvolver com docker
+
 Build:
   * Clonar;
   * cp .env.example .env;
   * `docker build -t faker .` (o ponto indica que o Dockerfile se encontra no diretório corrente)
 
-Rodar a imagem como container:
+Rodar a imagem do build como container:
 
     docker run --rm \
       -p 3141:80 \
@@ -18,9 +28,8 @@ Rodar a imagem como container:
       --env "APP_KEY=base64:hFCIxDuhMowTmnPENgqjXXOPcoJnC777ZBkEIy25t6o=" \
       --name faker faker
 
-Parar: `docker container rm -f faker`
+## Como rodar sem docker?
 
-## Como rodar?
 Basta seguir os procedimentos padrão:
   * Clonar;
   * Rodar o `composer install --no-dev`;
