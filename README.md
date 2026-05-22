@@ -2,6 +2,8 @@
 
 Implementação mínima das respostas de OAuth1 usadas pelo [uspdev/senhaunica-socialite](https://github.com/uspdev/senhaunica-socialite).
 
+Internamente a porta 3141 é usada, mas pode ser mapeada para qualquer porta no docker-compose.yml
+
 # Usando em outro sistema
 
 Basta subir na sua máquina um container apontando para a imagem do senhaunica-faker:
@@ -23,7 +25,7 @@ Build:
 Rodar a imagem do build como container:
 
     docker run --rm \
-      -p 3141:80 \
+      -p 3141:3141 \
       --env "APP_URL=127.0.0.1:3141" \
       --env "APP_KEY=base64:hFCIxDuhMowTmnPENgqjXXOPcoJnC777ZBkEIy25t6o=" \
       --name faker faker
