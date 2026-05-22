@@ -27,6 +27,7 @@ EXPOSE 3141
 
 USER www-data
 RUN composer install --no-interaction --no-dev
+RUN cp .env.example .env
 
 
 
