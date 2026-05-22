@@ -10,10 +10,10 @@ Build:
   * cp .env.example .env;
   * `docker build -t faker .` (o ponto indica que o Dockerfile se encontra no diretório corrente)
 
-Rodar a imagem como container:
+Rodar a imagem como container, internamente a porta 3141 é usada, mas pode ser mapeada para qualquer porta no docker-compose.yml:
 
     docker run --rm \
-      -p 3141:80 \
+      -p 3141:3141 \
       --env "APP_URL=127.0.0.1:3141" \
       --env "APP_KEY=base64:hFCIxDuhMowTmnPENgqjXXOPcoJnC777ZBkEIy25t6o=" \
       --name faker faker
