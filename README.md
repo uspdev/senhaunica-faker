@@ -1,9 +1,6 @@
 # senhaunica-faker-laravel
 Implementação mínima das respostas de OAuth1 usadas pelo [uspdev/senhaunica-socialite](https://github.com/uspdev/senhaunica-socialite).
 
-## Observações
-O sistema roda em PHP 8.2, mas deve rodar sem problemas no PHP 7.4. Basta apagar o composer.lock.
-
 ## Dependências
   * [uspdev/laravel-usp-theme](https://github.com/uspdev/laravel-usp-theme)
 
@@ -13,7 +10,13 @@ Build:
   * cp .env.example .env;
   * `docker build -t faker .` (o ponto indica que o Dockerfile se encontra no diretório corrente)
 
-Rodar: `docker run --rm --env "APP_URL=sua_app_url" --name faker faker`
+Rodar a imagem como container:
+
+    docker run --rm \
+      -p 3141:80 \
+      --env "APP_URL=127.0.0.1:3141" \
+      --env "APP_KEY=base64:hFCIxDuhMowTmnPENgqjXXOPcoJnC777ZBkEIy25t6o=" \
+      --name faker faker
 
 Parar: `docker container rm -f faker`
 
